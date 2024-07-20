@@ -1,25 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Pinchu Blog</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">Pat's wife</a></h1>
-        </header>
+{% extends 'blog/base.html' %}
 
+{% block content %}
         {% for post in myPosts %}
             <article>
                 <time>published: {{ post.published_date }}</time>
-                <h2><a href="">{{ post.title }}</a></h2>
+                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
                 <p>{{ post.text|linebreaksbr }}</p>
             </article>
         {% endfor %}
-
-        <article>
-            <time>published: 14.06.2014, 12:14</time>
-            <h2><a href="">My second post</a></h2>
-            <p>asfasfasfasfasf</p>
-        </article>
-    </body>
-</html>
+{% endblock %}
